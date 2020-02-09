@@ -237,7 +237,7 @@ public function drop(Player $sender){
 		}
 		$this->onlinepeeps = $onlinepeeps;
 		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addDropdown(T::LIGHT_PURPLE . "Select player"), $onlinepy);
+		$f->addDropdown(T::LIGHT_PURPLE . "Select player", $onlinepy);
 		$f->sendToPlayer($sender);
 	}
 public function set(Player $sender){
