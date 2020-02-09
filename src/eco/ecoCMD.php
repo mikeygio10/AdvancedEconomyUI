@@ -21,7 +21,7 @@ class ecoCMD extends Command implements PluginIdentifiableCommand{
 	
 	private $main;
 	
-	public function __construct(Main $main){
+	public function __construct(Loader $main){
 		$this->main = $main;
 		parent::__construct("economyui", "EcoUI", "/ecoui", ["ecui", "ecoui", "eu"]);
 	}
