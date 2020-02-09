@@ -235,7 +235,7 @@ public function drop(Player $sender){
 		foreach($this->main->getServer()->getOnlinePlayers() as $onlinePlayer){
 			array_push($onlinepy, $onlinePlayer->getName());
 		}
-		$this->onlinepeeps = $onlinepeeps;
+		$this->onlinepy = $onlinepy;
 		$f->setTitle(T::GREEN . "EconomyUI");
 		$f->addDropdown(T::LIGHT_PURPLE . "Select player", $onlinepy);
 		$f->sendToPlayer($sender);
