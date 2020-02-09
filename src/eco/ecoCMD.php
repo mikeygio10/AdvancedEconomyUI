@@ -117,8 +117,10 @@ public function seeForm(Player $player, string $player1){
 		$api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$f = $api->createCustomForm(function(Player $player, ?array $data){
 		});
+                $economy = EconomyAPI::getInstance();
+                $mny = $economy->myMoney($player1);
 		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addLabel(T::YELLOW . $player1 .  money: . " " . T::AQUA . EconomyAPI::getInstance()->myMoney($player1) . "\n\n\n\n\n\n");
+		$f->addLabel(T::YELLOW . "Money: $mny" . "/n/n/n");
 		$f->sendToPlayer($player);
 	}
 public function top(Player $player){
