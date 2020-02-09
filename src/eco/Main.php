@@ -9,7 +9,7 @@ use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use eco\ecoCMD;
 
-class Main extends PluginBase implements Listener {
+class Loader extends PluginBase implements Listener {
 
 	public function onEnable(){
 		@eval(base64_decode("JHRoaXMtPmdldExvZ2dlcigpLT5ub3RpY2UoInBsdWdpbiBjcmVhdGUgYnkgYnVtYnVta2lsbCIpOw=="));
