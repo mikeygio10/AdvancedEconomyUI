@@ -254,9 +254,9 @@ public function set(Player $sender){
 	     }
 public function drop1(Player $player, string $player1){
                $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
+	       $f = $api->createCustomForm(function(Player $player, ?array $data){
                 if(!isset($data)) return;
-		 $this->main->getServer()->getCommandMap()->dispatch($sender, "givemoney $player1 $data[0]");
+		 $this->main->getServer()->getCommandMap()->dispatch($player, "givemoney $player1 $data[0]");
 	    });
 		$f->setTitle(T::GREEN . "EconomyUI");
                 $f->addInput("Amount", "1000");
