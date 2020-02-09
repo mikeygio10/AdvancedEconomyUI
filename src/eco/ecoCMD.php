@@ -208,7 +208,7 @@ public function add(Player $sender){
        $form->setTitle(T::GREEN . "EconomyUI");
        $form->addButton(T::AQUA . "•USE INPUT•");
        $form->addButton(T::YELLOW . "•USE DROPDOWN•");
-		$f->sendToPlayer($sender);
+       $form->sendToPlayer($sender);
 	     }
 public function input(Player $sender){
                $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
