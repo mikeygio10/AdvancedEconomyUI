@@ -252,7 +252,7 @@ public function set(Player $sender){
                 $f->addInput("Amount", "1000");
 		$f->sendToPlayer($sender);
 	     }
-public function drop1(Player $sender, string $player1){
+public function drop1(Player $player, string $player1){
                $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
 	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
                 if(!isset($data)) return;
@@ -260,7 +260,7 @@ public function drop1(Player $sender, string $player1){
 	    });
 		$f->setTitle(T::GREEN . "EconomyUI");
                 $f->addInput("Amount", "1000");
-		$f->sendToPlayer($sender);
+		$f->sendToPlayer($player);
 	     }
 //todo
 }
