@@ -169,17 +169,48 @@ public function top(Player $player){
                             $this->set($sender);
                             break;
                         case 3:
-                            $this->give($sender);
                             break;
             }
           });
        $form->setTitle(T::GREEN . "EconomyUI");
        $form->addButton(T::AQUA . "Reduce Money");
-       $form->addButton(T::YELLOW . "Add Money");
-       $form->addButton(T::GOLD . "Set Money");
-       $form->addButton(T::AQUA . "Give Money");  
+       $form->addButton(T::YELLOW . "Give Money");
+       $form->addButton(T::GOLD . "Set Money");  
        $form->addButton(T::RED . "EXIT");
        $form->sendToPlayer($sender);
      }
+public function reduce(Player $sender){
+               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
+	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
+                if(!isset($data)) return;
+		 $this->main->getServer()->getCommandMap()->dispatch($sender, "takemoney $data[0] $data[1]");
+	    });
+		$f->setTitle(T::GREEN . "EconomyUI");
+		$f->addInput("Player name", "Bumbumkill");
+                $f->addInput("Amount", "1000");
+		$f->sendToPlayer($sender);
+	     }
+public function add(Player $sender){
+               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
+	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
+                if(!isset($data)) return;
+		 $this->main->getServer()->getCommandMap()->dispatch($sender, "givemoney $data[0] $data[1]");
+	    });
+		$f->setTitle(T::GREEN . "EconomyUI");
+		$f->addInput("Player name", "Bumbumkill");
+                $f->addInput("Amount", "1000");
+		$f->sendToPlayer($sender);
+	     }
+public function set(Player $sender){
+               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
+	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
+                if(!isset($data)) return;
+		 $this->main->getServer()->getCommandMap()->dispatch($sender, "setmoney $data[0] $data[1]");
+	    });
+		$f->setTitle(T::GREEN . "EconomyUI");
+		$f->addInput("Player name", "Bumbumkill");
+                $f->addInput("Amount", "1000");
+		$f->sendToPlayer($sender);
+	     }
 //todo
 }
