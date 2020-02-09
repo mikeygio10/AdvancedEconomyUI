@@ -17,6 +17,7 @@ use pocketmine\utils\TextFormat as T;
 class ecoCMD extends Command implements PluginIdentifiableCommand{
 	
 	public function getPlugin() : Plugin{
+   return;
 }
 	
 	private $main;
