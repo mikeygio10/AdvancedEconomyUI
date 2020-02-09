@@ -1,0 +1,17 @@
+name: EconomyUI
+main: eco\Main
+api: 3.0.0
+version: 1.0.0
+author: Bumbumkill
+
+permissions:
+ ecoui:
+  default: false
+  description: "All cmd"
+  children:
+   eco.cmd.use:
+    default: true
+    description: "Normal permission"
+   eco.use.op:
+    default: op
+    description: "OP permission"
