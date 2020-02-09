@@ -226,8 +226,8 @@ public function drop(Player $sender){
 		$api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$f = $api->createCustomForm(function(Player $player, ?array $data){
 			if(!isset($data)) return;
-			if($this->main->getServer()->getOfflinePlayer($this->onlinepeeps[$data[0]])->hasPlayedBefore() || $this->main->getServer()->getOfflinePlayer($this->onlinepeeps[$data[0]])->isOnline()){
-				$this->drop1($player, $this->onlinepeeps[$data[0]]);
+			if($this->main->getServer()->getOfflinePlayer($this->onlinepy[$data[0]])->hasPlayedBefore() || $this->main->getServer()->getOfflinePlayer($this->onlinepy[$data[0]])->isOnline()){
+				$this->drop1($player, $this->onlinepy[$data[0]]);
 			}else{
 				$player->sendMessage(T::RED . "Player is offline");
 			}
