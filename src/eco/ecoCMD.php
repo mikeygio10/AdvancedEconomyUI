@@ -262,5 +262,4 @@ public function drop1(Player $player, string $player1){
                 $f->addInput("Amount", "1000");
 		$f->sendToPlayer($player);
 	     }
-//todo
 }
