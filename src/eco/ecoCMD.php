@@ -232,7 +232,7 @@ public function drop(Player $sender){
 			}
 		});
 		$onlinepy = [];
-		foreach($this->getPlugin()->getServer()->getOnlinePlayers() as $onlinePlayer){
+		foreach($this->main->getServer()->getOnlinePlayers() as $onlinePlayer){
 			array_push($onlinepy, $onlinePlayer->getName());
 		}
 		$this->onlinepeeps = $onlinepeeps;
