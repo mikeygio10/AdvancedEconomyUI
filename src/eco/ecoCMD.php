@@ -23,7 +23,7 @@ class ecoCMD extends Command implements PluginIdentifiableCommand{
 	
 	public function __construct(Loader $main){
 		$this->main = $main;
-		parent::__construct("economyui", "EcoUI", "/ecoui", ["ecui", "ecoui", "eu"]);
+		parent::__construct("economyui", "EconomyUI Menu", "/ecoui", ["ecui", "ecoui", "eu"]);
 	}
 
 public function execute(CommandSender $sender, string $label, array $args){
@@ -70,11 +70,11 @@ public function memberForm(Player $sender){
             }
           });
        $form->setTitle(T::GREEN . "EconomyUI");
-       $form->addButton(T::AQUA . "See your money");
-       $form->addButton(T::YELLOW . "Pay");
-       $form->addButton(T::GOLD . "See other player money");
-       $form->addButton(T::AQUA . "Top money");  
-       $form->addButton(T::RED . "EXIT");
+       $form->addButton(T::AQUA . "•YOUR MONEY•");
+       $form->addButton(T::YELLOW . "•PAY•");
+       $form->addButton(T::GOLD . "•SEE MONEY•");
+       $form->addButton(T::AQUA . "•TOP MONEY•");  
+       $form->addButton(T::RED . "•EXIT•");
        $form->sendToPlayer($sender);
      }
 
@@ -173,10 +173,10 @@ public function top(Player $player){
             }
           });
        $form->setTitle(T::GREEN . "EconomyUI");
-       $form->addButton(T::AQUA . "Reduce Money");
-       $form->addButton(T::YELLOW . "Give Money");
-       $form->addButton(T::GOLD . "Set Money");  
-       $form->addButton(T::RED . "EXIT");
+       $form->addButton(T::AQUA . "•REDUCE MONEY•");
+       $form->addButton(T::YELLOW . "•GIVE MONEY•");
+       $form->addButton(T::GOLD . "•SET MONEY•");  
+       $form->addButton(T::RED . "•EXIT•");
        $form->sendToPlayer($sender);
      }
 public function reduce(Player $sender){
