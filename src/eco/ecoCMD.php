@@ -120,7 +120,7 @@ public function seeForm(Player $player, string $player1){
                 $economy = EconomyAPI::getInstance();
                 $mny = $economy->myMoney($player1);
 		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addLabel(T::YELLOW . "Money: $mny" . "/n/n/n");
+		$f->addLabel(T::YELLOW . "Money: $mny/n");
 		$f->sendToPlayer($player);
 	}
 public function top(Player $player){
