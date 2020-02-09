@@ -1,7 +1,7 @@
 name: EconomyUI
+version: 1.0.0
 main: eco\Loader
 api: 3.0.0
-version: 1.0.0
 author: Bumbumkill
 
 permissions:
