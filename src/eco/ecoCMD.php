@@ -51,79 +51,9 @@ public function execute(CommandSender $sender, string $label, array $args){
 		}
 		return false;
 	}
-public function memberForm(Player $sender){
-	        $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$form = $api->createSimpleForm(function(Player $sender, ?int $data){
-			if(!isset($data)) return;
-			switch($data){
-			case 0:
-                            $this->mymoney($sender);
-			    break;
-                        case 1:
-                            $this->pay($sender);
-                            break;
-                        case 2:
-                            $this->see($sender);
-                            break;
-                        case 3:
-                            $this->top($sender);
-                            break;
+
             }
           });
-       $form->setTitle(T::GREEN . "EconomyUI");
-       $form->addButton(T::AQUA . "•YOUR MONEY•");
-       $form->addButton(T::YELLOW . "•PAY•");
-       $form->addButton(T::GOLD . "•SEE MONEY•");
-       $form->addButton(T::AQUA . "•TOP MONEY•");  
-       $form->addButton(T::RED . "•EXIT•");
-       $form->sendToPlayer($sender);
-     }
-
-public function mymoney(Player $sender){
-                $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$f = $api->createCustomForm(function(Player $player, ?array $data){
-		});
-                $economy = EconomyAPI::getInstance();
-                $mny = $economy->myMoney($sender);
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addLabel(T::YELLOW . "Your money: $mny");
-		$f->sendToPlayer($sender);
-	     }
-public function pay(Player $sender){
-               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
-                if(!isset($data)) return;
-		 $this->main->getServer()->getCommandMap()->dispatch($sender, "pay $data[0] $data[1]");
-	    });
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addInput("Player name", "Bumbumkill");
-                $f->addInput("Amount", "1000");
-		$f->sendToPlayer($sender);
-	     }
-public function see(Player $player){
-		$api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$f = $api->createCustomForm(function(Player $player, ?array $data){
-			if(!isset($data)) return;
-			if($this->main->getServer()->getOfflinePlayer($data[0])->hasPlayedBefore() || $this->main->getServer()->getOfflinePlayer($data[0])->isOnline() && EconomyAPI::getInstance()->myMoney($data[0]) !== null){
-				$this->seeForm($player, $data[0]);
-			}else{
-				$player->sendMessage(T::RED . "Player is offline");
-			}
-		});
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addInput("Player name", "Bumbumkill");
-		$f->sendToPlayer($player);
-	}
-public function seeForm(Player $player, string $player1){
-		$api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$f = $api->createCustomForm(function(Player $player, ?array $data){
-		});
-                $economy = EconomyAPI::getInstance();
-                $mny = $economy->myMoney($player1);
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addLabel(T::YELLOW . "Money: $mny/n");
-		$f->sendToPlayer($player);
-	}
 public function top(Player $player){
 		$money = $this->main->getServer()->getPluginManager()->getPlugin("EconomyAPI");
 		$money_top = $money->getAllMoney();
@@ -151,85 +81,9 @@ public function top(Player $player){
 			});
 			$form->setTitle(T::GREEN . "Top 10 Richest Player");
 			$form->setContent("".$message);
-	                $form->addButton("Sumbit");
+	                $form->addButton("Exit");
 			$form->sendToPlayer($player);
+                        $form->sendToPlayer($sender);
 			return $form;
-	}
-   public function opForm(Player $sender){
-	        $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$form = $api->createSimpleForm(function(Player $sender, ?int $data){
-			if(!isset($data)) return;
-			switch($data){
-			case 0:
-                            $this->reduce($sender);
-			    break;
-                        case 1:
-                            $this->add($sender);
-                            break;
-                        case 2:
-                            $this->set($sender);
-                            break;
-                        case 3:
-                            break;
-            }
-          });
-       $form->setTitle(T::GREEN . "EconomyUI");
-       $form->addButton(T::AQUA . "•REDUCE MONEY•");
-       $form->addButton(T::YELLOW . "•GIVE MONEY•");
-       $form->addButton(T::GOLD . "•SET MONEY•");  
-       $form->addButton(T::RED . "•EXIT•");
-       $form->sendToPlayer($sender);
      }
-public function reduce(Player $sender){
-               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
-                if(!isset($data)) return;
-		 $this->main->getServer()->getCommandMap()->dispatch($sender, "takemoney $data[0] $data[1]");
-	    });
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addInput("Player name", "Bumbumkill");
-                $f->addInput("Amount", "1000");
-		$f->sendToPlayer($sender);
-	     }
-public function add(Player $sender){
-               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
-                if(!isset($data)) return;
-		 $this->main->getServer()->getCommandMap()->dispatch($sender, "givemoney $data[0] $data[1]");
-	    });
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addInput("Player name", "Bumbumkill");
-                $f->addInput("Amount", "1000");
-		$f->sendToPlayer($sender);
-	     }
-/**public function drop(Player $sender){
-		$api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$f = $api->createCustomForm(function(Player $player, ?array $data){
-			if(!isset($data)) return;
-			if($this->main->getServer()->getOfflinePlayer($this->onlinepy[$data[0]])->hasPlayedBefore() || $this->main->getServer()->getOfflinePlayer($this->onlinepy[$data[0]])->isOnline()){
-				$this->drop1($player, $this->onlinepy[$data[0]]);
-			}else{
-				$player->sendMessage(T::RED . "Player is offline");
-			}
-		});
-		$onlinepy = [];
-		foreach($this->main->getServer()->getOnlinePlayers() as $onlinePlayer){
-			array_push($onlinepy, $onlinePlayer->getName());
-		}
-		$this->onlinepy = $onlinepy;
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addDropdown(T::LIGHT_PURPLE . "Select player", $onlinepy);
-		$f->sendToPlayer($sender);
-	}*/
-public function set(Player $sender){
-               $api = $this->main->getServer()->getPluginManager()->getPlugin("FormAPI");
-	       $f = $api->createCustomForm(function(Player $sender, ?array $data){
-                if(!isset($data)) return;
-		 $this->main->getServer()->getCommandMap()->dispatch($sender, "setmoney $data[0] $data[1]");
-	    });
-		$f->setTitle(T::GREEN . "EconomyUI");
-		$f->addInput("Player name", "Bumbumkill");
-                $f->addInput("Amount", "1000");
-		$f->sendToPlayer($sender);
-	     }
 }
